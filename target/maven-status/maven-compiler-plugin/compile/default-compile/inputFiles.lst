@@ -1,2 +1,5 @@
 /Users/marynaprix/IdeaProjects/PicsGrabber/src/main/java/com/marynaprykhodko/picsGrabber/Presentation/MainApp.java
-/Users/marynaprix/IdeaProjects/PicsGrabber/src/main/java/com/marynaprykhodko/picsGrabber/Controller/Controller.java
+/Users/marynaprix/IdeaProjects/PicsGrabber/src/main/java/com/marynaprykhodko/picsGrabber/Controller/HTTPRequestController.java
+/Users/marynaprix/IdeaProjects/PicsGrabber/src/main/java/com/marynaprykhodko/picsGrabber/Utils/CreateFolder.java
+/Users/marynaprix/IdeaProjects/PicsGrabber/src/main/java/com/marynaprykhodko/picsGrabber/Controller/GrabberController.java
+/Users/marynaprix/IdeaProjects/PicsGrabber/src/main/java/com/marynaprykhodko/picsGrabber/Data/DomainName.java

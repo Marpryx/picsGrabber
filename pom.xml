@@ -41,30 +41,12 @@
     <dependencies>
 
 
-        <!-- The dependency for the SLF4J Facade -->
+
+        <!-- SLF4J - logging facade -->
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.12</version>
-        </dependency>
-
-        <!-- Binding for Log4J -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
-            <version>2.3</version>
-        </dependency>
-
-        <!-- Logging Framework Dependency Uses the log4j2 library -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <version>2.3</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.3</version>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.25</version>
         </dependency>
 
         <!-- JUnit 4 testing dependency -->
