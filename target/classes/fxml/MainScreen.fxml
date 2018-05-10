@@ -97,5 +97,10 @@
         <Insets left="55.0" right="15.0" top="-25.0" />
       </GridPane.margin>
     </Slider>
+      <Label fx:id="InfoLabel">
+          <GridPane.margin>
+              <Insets left="45.0" />
+          </GridPane.margin>
+      </Label>
   </children>
 </GridPane>

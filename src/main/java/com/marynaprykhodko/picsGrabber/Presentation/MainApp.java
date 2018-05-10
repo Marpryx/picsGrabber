@@ -1,13 +1,19 @@
 package com.marynaprykhodko.picsGrabber.Presentation;
 
+import com.marynaprykhodko.picsGrabber.Utils.CreateFolder;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class MainApp extends Application {
+
+    // Logger for output.
+    private final Logger log = LoggerFactory.getLogger(getClass().getName());
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -26,7 +32,7 @@ public class MainApp extends Application {
         primaryStage.setTitle("Grabber");
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
-        
+
     }
 
 
