@@ -18,14 +18,12 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import javafx.event.ActionEvent;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import org.jsoup.nodes.Document;
+
 
 import static com.marynaprykhodko.picsGrabber.Utils.CreateFolder.getUserDesktopDirPath;
 
@@ -33,10 +31,10 @@ public class GrabberController implements Initializable {
     // Logger
     private static final Logger LOG = LoggerFactory.getLogger(GrabberController.class);
 
-    private static final String folderPath = getUserDesktopDirPath();
+    private static String folderPath = getUserDesktopDirPath();
 
-    @FXML
-    GridPane grPane;
+    String random = String.valueOf(Math.random()); // to generate the number for the directory name
+
     @FXML
     private TextField linkTextField;
     @FXML
@@ -48,10 +46,19 @@ public class GrabberController implements Initializable {
     @FXML
     private ImageView previewImage1;
 
+    /**
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void handleSubmitButtonAction(ActionEvent event) throws IOException {
-        String websiteLink = linkTextField.getText();
+      //  String websiteLink = linkTextField.getText();
+
+        String websiteLink = "http://www.cuded.com/";
         int number = minSizeSlider.valueProperty().intValue();
+
+        linkTextField.setText(websiteLink);
 
         if (!websiteLink.isEmpty()) {
             InfoLabel.setText("You will save pics from the page: " + websiteLink);
@@ -97,33 +104,44 @@ public class GrabberController implements Initializable {
         //try with resources
         URL url = new URL(picSrc);
         InputStream in = url.openStream();
-        try(OutputStream out = new BufferedOutputStream(new FileOutputStream( folderPath + name))) {
 
-            LOG.info(folderPath);
+       // String random = String.valueOf(Math.random());
+
+        String folderName = folderPath + "/dir" + random ; //to create a random directory name
+        boolean result = new File(folderName).mkdir();
+        LOG.info("Folder name {}",folderName);
+        LOG.info("Folder created {}",result);
+
+        try(OutputStream out = new BufferedOutputStream(new FileOutputStream( folderName + name))) {
+
+            LOG.info("Folder path {}",folderPath);
 
             for (int b; (b = in.read()) != -1; ) {
                 out.write(b);
             }
-//set time out
+
+            //set timeout
+            showPreviewPics();
+
+
+        }
+
+        }
+
+        private void showPreviewPics() throws MalformedURLException {
             LOG.info("preview");
-            File file = new File("/Users/marynaprix/Documents/Photo/IMG_5841.jpg");
-            Image image = new Image(file.toURI().toString());
-           // previewImage1.setImage(image);
-           // previewImage1 = new ImageView(image);
+            File file = new File("/Users/marynaprix/Desktop/Photos/IMG_5841.jpg");
+            Image image = new Image(file.toURI().toURL().toString());
+
             previewImage1.setImage(image);
-//            grPane.getChildren().add(previewImage1);
-            //primaryStage.setScene(scene);
-            //primaryStage.show();
-            LOG.info(file.toString());
-            LOG.info(image.getUrl());
 
+            LOG.info("Img URL {}", file.toURI().toURL().toString());
+            LOG.info("Img heigth {}",String.valueOf(image.getHeight()));
+            LOG.info("Img width {}",String.valueOf(image.getWidth()));
+            LOG.info(image.toString());
+            LOG.info(previewImage1.getImage().toString());
         }
-        //out.close();
-        //in.close();
-
-
-        }
-
+        
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
