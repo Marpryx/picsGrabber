@@ -1,5 +1,7 @@
+com/marynaprykhodko/picsGrabber/Data/Image$1.class
+com/marynaprykhodko/picsGrabber/Data/Image.class
+com/marynaprykhodko/picsGrabber/Controller/HTTPRequestController.class
 com/marynaprykhodko/picsGrabber/Utils/CreateFolder.class
 com/marynaprykhodko/picsGrabber/Controller/GrabberController.class
-com/marynaprykhodko/picsGrabber/Controller/HTTPRequestController.class
-com/marynaprykhodko/picsGrabber/Data/DomainName.class
+com/marynaprykhodko/picsGrabber/Data/Image$Builder.class
 com/marynaprykhodko/picsGrabber/Presentation/MainApp.class
