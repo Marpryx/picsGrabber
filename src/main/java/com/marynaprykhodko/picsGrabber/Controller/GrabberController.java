@@ -22,6 +22,7 @@ import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.sql.Timestamp;
 import java.util.ResourceBundle;
 import org.jsoup.nodes.Document;
 
@@ -36,9 +37,17 @@ public class GrabberController implements Initializable {
 
     private static String folderPath = getUserDesktopDirPath();
 
-    String random = String.valueOf(Math.random()); // to generate the number for the directory name
+    //To create every time a new folder for the pics is possible by using Math class, that generates some numbers
+    //Or using timestamp. I leave both of them here.
 
-    String folderName = folderPath + "/dir" + random ; //to create a random directory name to save pics
+    //String random = String.valueOf(Math.random()); // to generate the number for the directory name
+    //To get timestamp
+    Timestamp timeStamp = new Timestamp(System.currentTimeMillis());
+
+    //timeStamp.getTime(); return number of milliseconds since January 1, 1970, 00:00:00 GMT
+
+    //String folderName = folderPath + "/dir" + random ; //to create a random directory name to save pics
+    String folderName = folderPath + "/dir" + timeStamp.getTime() ;
 
     @FXML
     private TextField linkTextField;
@@ -102,12 +111,6 @@ public class GrabberController implements Initializable {
             } else {
             InfoLabel.setText("Link is not valid");
         }
-       // checkImgNames();
-        //File file = new File("/Users/marynaprix/Documents/Photo/IMG_5841.jpg");
-        //Image image = new Image(file.toURI().toString());
-        //previewImage1.setImage(image);
-
-       // previewImage1.setImage(new Image("/Users/marynaprix/Desktop/dir0.49029137961933555/wedding-bouquet-3.jpg"));
 
         displayImg();
     }
@@ -119,7 +122,6 @@ public class GrabberController implements Initializable {
      * @throws IOException
      */
     private void downloadPics(String picSrc) throws IOException {
-       // String folder = null;
 
         int indexname = picSrc.lastIndexOf("/");
         if (indexname == picSrc.length()) {
@@ -156,37 +158,9 @@ public class GrabberController implements Initializable {
                 out.write(b);
             }
 
-//            File file = new File(folderName + name);
-//            Image image1 = new Image(file.toURI().toURL().toString());
-//            Image image2 = new Image(file.toURI().toURL().toString());
-//
-//            previewImage1.setImage(image1);
-//            previewImage2.setImage(image2);
-
-
-            //InfoLabel.setText("The pics saved to folder" + folderName);
-            //set timeout
-            //Label label1 = new Label("The pics saved to folder" + folderName);
-
-
         }
 
 
-        }
-
-        private void showPreviewPics() throws MalformedURLException {
-            LOG.info("preview");
-            //File file = new File("/Users/marynaprix/Desktop/Photos/IMG_5841.jpg");
-//            File file = new File(folderName + name);
-//            Image image = new Image(file.toURI().toURL().toString());
-//
-//            previewImage1.setImage(image);
-
-//            LOG.info("Img URL {}", file.toURI().toURL().toString());
-//            LOG.info("Img heigth {}",String.valueOf(image.getHeight()));
-//            LOG.info("Img width {}",String.valueOf(image.getWidth()));
-//            LOG.info(image.toString());
-//            LOG.info(previewImage1.getImage().toString());
         }
 
 
